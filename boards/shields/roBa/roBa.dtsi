@@ -79,42 +79,23 @@
         >;
     };
 
-    /* 【修正箇所1】
-       マトリックスの行（Row）を、SPI通信と絶対に被らない
-       後半の安全なピン（D6, D7, D8, D9）へ退避させ、発熱を完全に防ぎます。
+    /* 【発熱対策】
+       キースイッチ読み取り用の行（Row）ピンを、トラックボールが使用するD1〜D3から
+       競合の起きない後半の安全なピン（D6, D7, D8, D9）へ完全に退避させます。
     */
     kscan0: kscan {
         compatible = "zmk,kscan-gpio-matrix";
         label = "KSCAN";
         diode-direction = "col2row";
         row-gpios
-            = <&xiao_d 6 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>  /* Xiao 6番ピン */
-            , <&xiao_d 7 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>  /* Xiao 7番ピン */
-            , <&xiao_d 8 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>  /* Xiao 8番ピン */
-            , <&xiao_d 9 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>  /* Xiao 9番ピン */
+            = <&xiao_d 6 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>  /* Xiao 6番ピン (D6) */
+            , <&xiao_d 7 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>  /* Xiao 7番ピン (D7) */
+            , <&xiao_d 8 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>  /* Xiao 8番ピン (D8) */
+            , <&xiao_d 9 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>  /* Xiao 9番ピン (D9) */
             ;
     };
 
-    /* 【修正箇所2】
-       D0ピン、D5ピンを勝手に予約してピン競合の原因になっていた
-       エンコーダー定義のgpios指定を削除し、完全に無害化します。
-    */
-    left_encoder: encoder_left {
-        compatible = "alps,ec11";
-        steps = <12>;
-        status = "disabled";
-    };
-
-    right_encoder: encoder_right {
-        status = "disabled";
-    };
-
-    sensors: sensors {
-        compatible = "zmk,keymap-sensors";
-        sensors = <&left_encoder &right_encoder>;
-        triggers-per-rotation = <10>;
-    };
-
+    /* トラックボールのインプットリスナーの土台 */
     trackball_listener: trackball_listener {
         compatible = "zmk,input-listener";
         status = "disabled";
