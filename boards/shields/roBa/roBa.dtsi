@@ -1,128 +1,100 @@
-#include <dt-bindings/zmk/matrix_transform.h>
-#include <physical_layouts.dtsi>
+#include "roBa.dtsi"
 
+/* ==========================================================================
+   1. キーマップ変形（トランスフォーム）の設定
+   ========================================================================== */
+&default_transform {
+    col-offset = <6>;
+};
+
+/* ==========================================================================
+   2. キースイッチ・マトリックス（KSCAN）の再定義（発熱対策）
+   ==========================================================================   
+   元のdtsi側で定義されていた row-gpios (D1, D2, D3) がトラックボールと衝突していたため、
+   干渉しない完全に独立したピンへマトリックス全体のピンアサインを再マッピングします。
+*/
+&kscan0 {
+    diode-direction = "col2row";
+    
+    /* 行（Row）の引っ越し先設定 */
+    row-gpios
+        = <&gpio0 2  (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>  /* Xiao 0番ピン (D0) */
+        , <&gpio0 3  (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>  /* Xiao 1番ピン (D1) */
+        , <&gpio0 4  (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>  /* Xiao 2番ピン (D2) */
+        , <&gpio0 10 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>  /* Xiao 6番ピン (D6) */
+        ;
+
+    /* 列（Col）の設定 */
+    col-gpios
+        = <&xiao_d 10 GPIO_ACTIVE_HIGH>
+        , <&xiao_d 9  GPIO_ACTIVE_HIGH>
+        , <&xiao_d 8  GPIO_ACTIVE_HIGH>
+        , <&xiao_d 7  GPIO_ACTIVE_HIGH>
+        , <&gpio0 9   GPIO_ACTIVE_HIGH>  /* Xiao 5番ピン (D5) */
+        ;
+};
+
+/* ==========================================================================
+   3. トラックボール・インプットリスナーの設定
+   ========================================================================== */
 / {
-    chosen {
-        zmk,physical-layout = &roba_physical_layout;
-    };
-
-    roba_physical_layout: roba_physical_layout {
-        compatible = "zmk,physical-layout";
-        display-name = "Default";
-        transform = <&default_transform>;
-        kscan = <&kscan0>;
-
-        keys  //                     w   h    x    y     rot    rx    ry
-            = <&key_physical_attrs 100 100    0   37       0     0     0>
-            , <&key_physical_attrs 100 100  100   12       0     0     0>
-            , <&key_physical_attrs 100 100  200    0       0     0     0>
-            , <&key_physical_attrs 100 100  300   12       0     0     0>
-            , <&key_physical_attrs 100 100  400   24       0     0     0>
-
-            , <&key_physical_attrs 100 100  800   24       0     0     0>
-            , <&key_physical_attrs 100 100  900   12       0     0     0>
-            , <&key_physical_attrs 100 100 1000    0       0     0     0>
-            , <&key_physical_attrs 100 100 1100   12       0     0     0>
-            , <&key_physical_attrs 100 100 1200   37       0     0     0>
-
-            , <&key_physical_attrs 100 100    0  137       0     0     0>
-            , <&key_physical_attrs 100 100  100  112       0     0     0>
-            , <&key_physical_attrs 100 100  200  100       0     0     0>
-            , <&key_physical_attrs 100 100  300  112       0     0     0>
-            , <&key_physical_attrs 100 100  400  124       0     0     0>
-            , <&key_physical_attrs 100 100  500  137       0     0     0>
-
-            , <&key_physical_attrs 100 100  700  137       0     0     0>
-            , <&key_physical_attrs 100 100  800  124       0     0     0>
-            , <&key_physical_attrs 100 100  900  112       0     0     0>
-            , <&key_physical_attrs 100 100 1000  100       0     0     0>
-            , <&key_physical_attrs 100 100 1100  112       0     0     0>
-            , <&key_physical_attrs 100 100 1200  137       0     0     0>
-
-            , <&key_physical_attrs 100 100    0  237       0     0     0>
-            , <&key_physical_attrs 100 100  100  212       0     0     0>
-            , <&key_physical_attrs 100 100  200  200       0     0     0>
-            , <&key_physical_attrs 100 100  300  212       0     0     0>
-            , <&key_physical_attrs 100 100  400  224       0     0     0>
-            , <&key_physical_attrs 100 100  500  237       0     0     0>
-
-            , <&key_physical_attrs 100 100  700  237       0     0     0>
-            , <&key_physical_attrs 100 100  800  224       0     0     0>
-            , <&key_physical_attrs 100 100  900  212       0     0     0>
-            , <&key_physical_attrs 100 100 1000  200       0     0     0>
-            , <&key_physical_attrs 100 100 1100  212       0     0     0>
-            , <&key_physical_attrs 100 100 1200  237       0     0     0>
-
-            , <&key_physical_attrs 100 100    0  337       0     0     0>
-            , <&key_physical_attrs 100 100  100  312       0     0     0>
-            , <&key_physical_attrs 100 100  200  300       0     0     0>
-            , <&key_physical_attrs 100 100  325  337       0     0     0>
-            , <&key_physical_attrs 100 100  437  350    1000   437   350>
-            , <&key_physical_attrs 100 100  550  387    2000   550   387>
-
-
-
-            , <&key_physical_attrs 100 100  650  387 (-2000)   650   387>
-            , <&key_physical_attrs 100 100  763  350 (-1000)     0   350>
-
-            , <&key_physical_attrs 100 100 1200  337       0     0     0>
-
-            ;
-    };
-
-    default_transform: keymap_transform_0 {
-        compatible = "zmk,matrix-transform";
-        columns = <11>;
-        rows = <4>;
-        map = <
-            RC(0,0) RC(0,1) RC(0,2) RC(0,3) RC(0,4)                     RC(0,6) RC(0,7) RC(0,8) RC(0,9) RC(0,10)
-            RC(1,0) RC(1,1) RC(1,2) RC(1,3) RC(1,4) RC(1,5)     RC(3,6) RC(1,6) RC(1,7) RC(1,8) RC(1,9) RC(1,10)
-            RC(2,0) RC(2,1) RC(2,2) RC(2,3) RC(2,4) RC(2,5)     RC(3,7) RC(2,6) RC(2,7) RC(2,8) RC(2,9) RC(2,10)
-            RC(3,0) RC(3,1) RC(3,2) RC(3,3) RC(3,4) RC(3,5)     RC(3,8) RC(3,9)                         RC(3,10)
-        >;
-    };
-
-    kscan0: kscan {
-        compatible = "zmk,kscan-gpio-matrix";
-        label = "KSCAN";
-        diode-direction = "col2row";
-            row-gpios
-                = <&xiao_d 1 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
-                , <&xiao_d 2 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
-                , <&xiao_d 3 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
-                , <&xiao_d 6 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>
-                ;
-    };
-
-    left_encoder: encoder_left {
-        compatible = "alps,ec11";
-        a-gpios = <&xiao_d 5 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
-        b-gpios = <&xiao_d 0 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
-        steps = <12>;
-        status = "disabled";
-    };
-
-    right_encoder: encoder_right {
-        status = "disabled";
-    };
-
-    sensors: sensors {
-        compatible = "zmk,keymap-sensors";
-        sensors = <&left_encoder &right_encoder>;
-        triggers-per-rotation = <10>;
-    };
-
-    trackball_listener: trackball_listener {
+    trackball_listener {
+        status = "okay";
         compatible = "zmk,input-listener";
-        status = "disabled";
+        device = <&trackball>;
+    };
+
+    /* dtsi側でD5/D0を掴んでしまっていたエンコーダーを完全に無効化して解放 */
+    /delete-node/ encoder_left;
+    /delete-node/ encoder_right;
+};
+
+/* ==========================================================================
+   4. トラックボール用 SPI通信（SPIM0）ピンアサイン定義
+   ========================================================================== 
+   キースイッチにD0〜D2を譲ったため、トラックボールの通信線は
+   後半の D3, D4, 3.3V, GND 付近の安全なピンへアサインをまとめます。
+*/
+&pinctrl {
+    spi0_default: spi0_default {
+        group1 {
+            psels = <NRF_PSEL(SPIM_SCK,  0, 5)>,   /* Xiao 3番ピン (D3)  -> トラックボール SCK */
+                    <NRF_PSEL(SPIM_MOSI, 0, 4)>;   /* Xiao 2番ピン (D2)  -> トラックボール MOSI */
+        group2 {
+            psels = <NRF_PSEL(SPIM_MISO, 0, 28)>;  /* Xiao 4番ピン (D4)  -> トラックボール MISO */
+        };
+    };
+
+    spi0_sleep: spi0_sleep {
+        group1 {
+            psels = <NRF_PSEL(SPIM_SCK,  0, 5)>,
+                    <NRF_PSEL(SPIM_MOSI, 0, 4)>;
+        group2 {
+            psels = <NRF_PSEL(SPIM_MISO, 0, 28)>;
+            low-power-enable;
+        };
     };
 };
 
+&xiao_serial { status = "disabled"; };
+
 &spi0 {
-    status = "disabled";
+    status = "okay";
+    compatible = "nordic,nrf-spim";
+    pinctrl-0 = <&spi0_default>;
+    pinctrl-1 = <&spi0_sleep>;
+    pinctrl-names = "default", "sleep";
+    
+    /* CS（チップセレクト）ピンアサイン */
+    cs-gpios = <&gpio0 29 GPIO_ACTIVE_LOW>;      /* Xiao 5番ピン (D5) -> トラックボール CS */
 
     trackball: trackball@0 {
-        status = "disabled";
+        status = "okay";
+        compatible = "pixart,pmw3610";
         reg = <0>;
+        spi-max-frequency = <2000000>;
+        
+        /* IRQ（割り込み信号ピン）アサイン */
+        irq-gpios = <&gpio0 3 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>; /* Xiao 1番ピン (D1) -> トラックボール IRQ */
     };
 };
