@@ -1,67 +1,37 @@
 #include "roBa.dtsi"
 
 /* ==========================================================================
-   1. キーマップ変形（トランスフォーム）の設定
-   ========================================================================== */
-&default_transform {
-    col-offset = <6>;
-};
-
-/* ==========================================================================
-   2. キースイッチ・マトリックス（KSCAN）の再定義（発熱対策）
-   ==========================================================================   
-   元のdtsi側で定義されていた row-gpios (D1, D2, D3) がトラックボールと衝突していたため、
-   干渉しない完全に独立したピンへマトリックス全体のピンアサインを再マッピングします。
+   1. 不要な機能の完全無効化・解放（発熱対策）
+   ========================================================================== 
+   dtsi側でD5/D0ピンを掴んでしまっていたロータリーエンコーダーを
+   完全に削除（初期化）し、マイコンのピンをクリアな状態に解放します。
 */
-&kscan0 {
-    diode-direction = "col2row";
-    
-    /* 行（Row）の引っ越し先設定 */
-    row-gpios
-        = <&gpio0 2  (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>  /* Xiao 0番ピン (D0) */
-        , <&gpio0 3  (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>  /* Xiao 1番ピン (D1) */
-        , <&gpio0 4  (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>  /* Xiao 2番ピン (D2) */
-        , <&gpio0 10 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>  /* Xiao 6番ピン (D6) */
-        ;
-
-    /* 列（Col）の設定 */
-    col-gpios
-        = <&xiao_d 10 GPIO_ACTIVE_HIGH>
-        , <&xiao_d 9  GPIO_ACTIVE_HIGH>
-        , <&xiao_d 8  GPIO_ACTIVE_HIGH>
-        , <&xiao_d 7  GPIO_ACTIVE_HIGH>
-        , <&gpio0 9   GPIO_ACTIVE_HIGH>  /* Xiao 5番ピン (D5) */
-        ;
-};
-
-/* ==========================================================================
-   3. トラックボール・インプットリスナーの設定
-   ========================================================================== */
 / {
+    /delete-node/ encoder_left;
+    /delete-node/ encoder_right;
+
+    /* トラックボールのインプットリスナーを有効化 */
     trackball_listener {
         status = "okay";
         compatible = "zmk,input-listener";
         device = <&trackball>;
     };
-
-    /* dtsi側でD5/D0を掴んでしまっていたエンコーダーを完全に無効化して解放 */
-    /delete-node/ encoder_left;
-    /delete-node/ encoder_right;
 };
 
 /* ==========================================================================
-   4. トラックボール用 SPI通信（SPIM0）ピンアサイン定義
+   2. トラックボール用 SPI通信（SPIM0）ピンアサインの再定義
    ========================================================================== 
-   キースイッチにD0〜D2を譲ったため、トラックボールの通信線は
-   後半の D3, D4, 3.3V, GND 付近の安全なピンへアサインをまとめます。
+   MISOとMOSIが同じピン（0, 4）になっていた重なりを完全に解消します。
+   一般的なroBaのトラックボール側配線（D4=MISO、D5=CS）に整合させます。
 */
 &pinctrl {
     spi0_default: spi0_default {
         group1 {
-            psels = <NRF_PSEL(SPIM_SCK,  0, 5)>,   /* Xiao 3番ピン (D3)  -> トラックボール SCK */
-                    <NRF_PSEL(SPIM_MOSI, 0, 4)>;   /* Xiao 2番ピン (D2)  -> トラックボール MOSI */
+            psels = <NRF_PSEL(SPIM_SCK,  0, 5)>,   /* SCK  : Xiao 3番ピン (D3) */
+                    <NRF_PSEL(SPIM_MOSI, 0, 4)>;   /* MOSI : Xiao 2番ピン (D2) */
+        };
         group2 {
-            psels = <NRF_PSEL(SPIM_MISO, 0, 28)>;  /* Xiao 4番ピン (D4)  -> トラックボール MISO */
+            psels = <NRF_PSEL(SPIM_MISO, 0, 28)>;  /* MISO : Xiao 4番ピン (D4) に完全分離 */
         };
     };
 
@@ -69,6 +39,7 @@
         group1 {
             psels = <NRF_PSEL(SPIM_SCK,  0, 5)>,
                     <NRF_PSEL(SPIM_MOSI, 0, 4)>;
+        };
         group2 {
             psels = <NRF_PSEL(SPIM_MISO, 0, 28)>;
             low-power-enable;
@@ -76,6 +47,9 @@
     };
 };
 
+/* ==========================================================================
+   3. トラックボール本体・SPI通信の有効化（競合ピンの修正）
+   ========================================================================== */
 &xiao_serial { status = "disabled"; };
 
 &spi0 {
@@ -84,9 +58,7 @@
     pinctrl-0 = <&spi0_default>;
     pinctrl-1 = <&spi0_sleep>;
     pinctrl-names = "default", "sleep";
-    
-    /* CS（チップセレクト）ピンアサイン */
-    cs-gpios = <&gpio0 29 GPIO_ACTIVE_LOW>;      /* Xiao 5番ピン (D5) -> トラックボール CS */
+    cs-gpios = <&gpio0 29 GPIO_ACTIVE_LOW>;      /* CS : Xiao 5番ピン (D5) */
 
     trackball: trackball@0 {
         status = "okay";
@@ -94,7 +66,7 @@
         reg = <0>;
         spi-max-frequency = <2000000>;
         
-        /* IRQ（割り込み信号ピン）アサイン */
-        irq-gpios = <&gpio0 3 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>; /* Xiao 1番ピン (D1) -> トラックボール IRQ */
+        /* IRQ（割り込みピン）を 1番ピン (D1 = P0.03) に逃がします */
+        irq-gpios = <&gpio0 3 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>; 
     };
 };
