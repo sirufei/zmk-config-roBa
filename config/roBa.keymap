@@ -147,10 +147,10 @@
 
         number {
             bindings = <
-&trans          &trans  &trans          &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS                         &kp N7     &kp N8  &kp N9  &kp EQUAL   &kp SLASH
-&trans          &trans  &trans          &kp LEFT_BRACKET      &kp RIGHT_BRACKET      &trans      &trans     &kp N4     &kp N5  &kp N6  &kp COMMA   &kp ASTERISK
-&kp LEFT_SHIFT  &trans  &trans          &kp LEFT_BRACE        &kp RIGHT_BRACE        &trans      &kp N0     &kp N1     &kp N2  &kp N3  &kp PERIOD  &kp MINUS
-&trans          &trans  &kp LEFT_SHIFT  &trans                &trans                 &trans      &kp ENTER  &kp ENTER                              &kp PLUS
+&trans            &trans  &trans          &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS                         &kp N7     &kp N8  &kp N9  &kp EQUAL   &kp SLASH
+&kp LEFT_COMMAND  &trans  &trans          &kp LEFT_BRACKET      &kp RIGHT_BRACKET      &trans      &trans     &kp N4     &kp N5  &kp N6  &kp COMMA   &kp ASTERISK
+&kp LEFT_SHIFT    &trans  &trans          &kp LEFT_BRACE        &kp RIGHT_BRACE        &trans      &kp N0     &kp N1     &kp N2  &kp N3  &kp PERIOD  &kp MINUS
+&trans            &trans  &kp LEFT_SHIFT  &trans                &trans                 &trans      &kp ENTER  &kp ENTER                              &kp PLUS
             >;
         };
     };
