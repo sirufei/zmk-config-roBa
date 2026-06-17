@@ -91,10 +91,10 @@
 
         FUNCTION {
             bindings = <
-&kp F1          &kp F2            &kp F3       &kp F4   &kp F5                                           &kp C_BRI_UP        &kp C_VOL_UP        &kp C_VOL_DN         &kp K_MUTE        &kp LG(LS(NUMBER_4))
-&kp F6          &kp MINUS         &kp LS(TAB)  &kp TAB  &kp PLUS          &kp F11      &kp F13           &kp C_BRI_DN        &kp LC(LEFT_ARROW)  &kp LC(RIGHT_ARROW)  &kp LC(UP_ARROW)  &kp LS(LC(LG(NUMBER_4)))
-&kp LEFT_SHIFT  &kp F7            &kp F8       &kp F9   &kp F10           &kp F11      &kp LC(UP_ARROW)  &kp LC(LEFT_ARROW)  &kp LG(LC(F))       &kp LG(M)            &trans            &trans
-&trans          &kp LEFT_COMMAND  &kp F12      &trans   &kp LEFT_COMMAND  &trans       &kp LC(UP_ARROW)  &trans                                                                         &trans
+&kp F1          &kp F2            &kp F3       &kp F4   &kp F5                                           &kp C_BRI_UP        &kp C_VOL_UP           &kp C_VOL_DN         &kp K_MUTE        &kp LG(LS(NUMBER_4))
+&kp F6          &kp LG(MINUS)     &kp LS(TAB)  &kp TAB  &kp LG(PLUS)      &kp F11      &kp F13           &kp C_BRI_DN        &kp LC(LEFT_ARROW)     &kp LC(RIGHT_ARROW)  &kp LC(UP_ARROW)  &kp LS(LC(LG(NUMBER_4)))
+&kp LEFT_SHIFT  &kp F7            &kp F8       &kp F9   &kp F10           &kp F11      &kp LC(UP_ARROW)  &kp LC(LEFT_ARROW)  &kp LG(LC(LA(LS(F))))  &kp LG(M)            &kp LG(W)         &trans
+&trans          &kp LEFT_COMMAND  &kp F12      &trans   &kp LEFT_COMMAND  &trans       &kp LC(UP_ARROW)  &trans                                                                            &trans
             >;
 
             sensor-bindings = <&inc_dec_kp LS(LG(TAB)) LG(TAB)>;
