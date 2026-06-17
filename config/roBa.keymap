@@ -86,7 +86,7 @@
 &kp LEFT_ALT    &kp LEFT_WIN  &kp LEFT_CONTROL  &lt_to_layer_0 7 LC(SPACE)  &lt_to_layer_0 2 SPACE  &lt_to_layer_0 3 LG(TAB)      &kp BACKSPACE  &lt_to_layer_0 1 ENTER                       &kp UNDERSCORE
             >;
 
-            sensor-bindings = <&inc_dec_kp PG_UP PG_DN>;
+            sensor-bindings = <&inc_dec_kp LG(RIGHT_BRACKET) LG(LEFT_BRACKET)>;
         };
 
         FUNCTION {
@@ -97,7 +97,7 @@
 &trans          &kp LEFT_COMMAND  &kp F12      &trans   &kp LEFT_COMMAND  &trans       &kp LC(UP_ARROW)  &trans                                                                         &trans
             >;
 
-            sensor-bindings = <&inc_dec_kp TAB LS(TAB)>;
+            sensor-bindings = <&inc_dec_kp LS(LG(TAB)) LG(TAB)>;
         };
 
         NUM {
