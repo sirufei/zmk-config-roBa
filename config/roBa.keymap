@@ -152,6 +152,8 @@
 &kp LEFT_SHIFT    &trans  &trans          &kp LEFT_BRACE        &kp RIGHT_BRACE        &trans      &kp N0     &kp N1     &kp N2  &kp N3  &kp PERIOD  &kp MINUS
 &trans            &trans  &kp LEFT_SHIFT  &trans                &trans                 &trans      &kp ENTER  &kp ENTER                              &kp PLUS
             >;
+
+            sensor-bindings = <&inc_dec_kp LA(RIGHT_ARROW) LA(LEFT_ARROW)>;
         };
     };
 };
