@@ -26,34 +26,7 @@
 };
 
 / {
-    combos {
-        compatible = "zmk,combos";
-
-        tab {
-            bindings = <&kp TAB>;
-            key-positions = <11 12>;
-        };
-
-        shift_tab {
-            bindings = <&kp LS(TAB)>;
-            key-positions = <12 13>;
-        };
-
-        muhennkann {
-            bindings = <&to_layer_0 INT_MUHENKAN>;
-            key-positions = <11 10>;
-        };
-
-        double_quotation {
-            bindings = <&kp DOUBLE_QUOTES>;
-            key-positions = <20 21>;
-        };
-
-        eq {
-            bindings = <&kp EQUAL>;
-            key-positions = <24 25>;
-        };
-    };
+    combos { compatible = "zmk,combos"; };
 
     macros {
         to_layer_0: to_layer_0 {
@@ -80,9 +53,9 @@
 
         default_layer {
             bindings = <
-&kp Q           &kp L         &kp U             &kp P                       &kp MINUS                                                            &kp F                   &kp W  &kp R  &kp Y  &kp PERIOD
+&kp Q           &kp G         &kp U             &kp P                       &kp MINUS                                                            &kp F                   &kp W  &kp R  &kp Y  &kp PERIOD
 &kp E           &kp I         &kp A             &kp O                       &kp B                   &kp ESCAPE                    &kp TAB        &kp K                   &kp T  &kp N  &kp S  &kp H
-&kp LEFT_SHIFT  &kp Z         &kp X             &kp C                       &kp V                   &kp DEL                       &kp SLASH      &kp G                   &kp D  &kp M  &kp J  &kp COMMA
+&kp LEFT_SHIFT  &kp Z         &kp X             &kp C                       &kp V                   &kp DEL                       &kp SLASH      &kp L                   &kp D  &kp M  &kp J  &kp COMMA
 &kp LEFT_ALT    &kp LEFT_WIN  &kp LEFT_CONTROL  &lt_to_layer_0 7 LC(SPACE)  &lt_to_layer_0 2 SPACE  &lt_to_layer_0 3 LG(TAB)      &kp BACKSPACE  &lt_to_layer_0 1 ENTER                       &kp UNDERSCORE
             >;
 
