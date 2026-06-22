@@ -37,9 +37,13 @@
         };
 
         tab_move: tab_move {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings = <&kp LG(TAB)>, <&macro_tap_time 1000>, <&kp LCMD>;
+            compatible = "zmk,behavior-macro-one-param";
+            #binding-cells = <1>;
+            bindings =
+                <&macro_press>,
+                <&kp LCMD &macro_param_1to1 &kp MACRO_PLACEHOLDER>,
+                <&macro_release>,
+                <&kp LCMD>;
 
             label = "TAB_MOVE";
         };
@@ -73,7 +77,7 @@
         FUNCTION {
             bindings = <
 &kp F1          &kp F2            &kp F3       &kp F4   &kp F5                                           &kp C_BRI_UP        &kp C_VOL_UP        &kp C_VOL_DN         &kp K_MUTE        &kp LG(LS(NUMBER_4))
-&kp F6          &kp LG(MINUS)     &kp LS(TAB)  &kp TAB  &kp LG(LS(SEMI))  &kp F11      &kp F13           &kp C_BRI_DN        &kp LC(LEFT_ARROW)  &kp LC(RIGHT_ARROW)  &kp LC(UP_ARROW)  &kp LS(LC(LG(NUMBER_4)))
+&kp F6          &kp LG(MINUS)     &kp LS(TAB)  &kp TAB  &kp LG(KP_PLUS)   &kp F11      &kp F13           &kp C_BRI_DN        &kp LC(LEFT_ARROW)  &kp LC(RIGHT_ARROW)  &kp LC(UP_ARROW)  &kp LS(LC(LG(NUMBER_4)))
 &kp LEFT_SHIFT  &kp F7            &kp F8       &kp F9   &kp F10           &kp F11      &kp LC(UP_ARROW)  &kp LC(LEFT_ARROW)  &kp LC(LG(F))       &kp LG(M)            &kp LG(W)         &trans
 &trans          &kp LEFT_COMMAND  &kp F12      &trans   &kp LEFT_COMMAND  &trans       &kp LC(UP_ARROW)  &trans                                                                         &trans
             >;
@@ -94,13 +98,13 @@
 
         ARROW {
             bindings = <
-&kp ESCAPE      &kp LC(LS(TAB))         &kp UP_ARROW    &kp LC(TAB)              &trans                            &trans    &kp UP_ARROW    &kp UP_ARROW    &trans           &trans
-&kp HOME        &kp LEFT_ARROW          &kp DOWN_ARROW  &kp RIGHT_ARROW          &kp END  &trans         &kp HOME  &kp HOME  &kp LEFT_ARROW  &kp DOWN_ARROW  &kp RIGHT_ARROW  &kp END
-&kp LEFT_SHIFT  &kp LG(LS(LEFT_ARROW))  &trans          &kp LG(LS(RIGHT_ARROW))  &trans   &tab_move      &trans    &trans    &trans          &trans          &trans           &trans
-&trans          &kp LEFT_COMMAND        &kp LSHIFT      &kp LEFT_CONTROL         &trans   &trans         &trans    &trans                                                     &trans
+&kp ESCAPE      &kp LC(LS(TAB))         &kp UP_ARROW    &kp LC(TAB)              &trans                         &trans    &kp UP_ARROW    &kp UP_ARROW    &trans           &trans
+&kp HOME        &kp LEFT_ARROW          &kp DOWN_ARROW  &kp RIGHT_ARROW          &kp END  &trans      &kp HOME  &kp HOME  &kp LEFT_ARROW  &kp DOWN_ARROW  &kp RIGHT_ARROW  &kp END
+&kp LEFT_SHIFT  &kp LG(LS(LEFT_ARROW))  &trans          &kp LG(LS(RIGHT_ARROW))  &trans   &trans      &trans    &trans    &trans          &trans          &trans           &trans
+&trans          &kp LEFT_COMMAND        &kp LSHIFT      &kp LEFT_CONTROL         &trans   &trans      &trans    &trans                                                     &trans
             >;
 
-            sensor-bindings = <&inc_dec_kp LC(PAGE_UP) LC(PAGE_DOWN)>;
+            sensor-bindings = <&inc_dec_kp PAGE_DOWN PAGE_UP>;
         };
 
         MOUSE {
