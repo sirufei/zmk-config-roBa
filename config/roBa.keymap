@@ -77,7 +77,7 @@
         FUNCTION {
             bindings = <
 &kp F1          &kp F2            &kp F3       &kp F4   &kp F5                                           &kp C_BRI_UP        &kp C_VOL_UP        &kp C_VOL_DN         &kp K_MUTE        &kp LG(LS(NUMBER_4))
-&kp F6          &kp LG(MINUS)     &kp LS(TAB)  &kp TAB  &kp LG(KP_PLUS)   &kp F11      &kp F13           &kp C_BRI_DN        &kp LC(LEFT_ARROW)  &kp LC(RIGHT_ARROW)  &kp LC(UP_ARROW)  &kp LS(LC(LG(NUMBER_4)))
+&kp F6          &kp LG(MINUS)     &kp LS(TAB)  &kp TAB  &kp LG(PLUS)      &kp F11      &kp F13           &kp C_BRI_DN        &kp LC(LEFT_ARROW)  &kp LC(RIGHT_ARROW)  &kp LC(UP_ARROW)  &kp LS(LC(LG(NUMBER_4)))
 &kp LEFT_SHIFT  &kp F7            &kp F8       &kp F9   &kp F10           &kp F11      &kp LC(UP_ARROW)  &kp LC(LEFT_ARROW)  &kp LC(LG(F))       &kp LG(M)            &kp LG(W)         &trans
 &trans          &kp LEFT_COMMAND  &kp F12      &trans   &kp LEFT_COMMAND  &trans       &kp LC(UP_ARROW)  &trans                                                                         &trans
             >;
@@ -87,10 +87,10 @@
 
         NUM {
             bindings = <
-&kp LG(Q)      &kp LG(T)      &kp LG(R)  &kp LG(W)       &kp PLUS                                                &kp LEFT_BRACE    &kp SQT          &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS  &kp RIGHT_BRACE
-&kp LG(Y)      &kp LS(LG(V))  &kp LG(V)  &kp LG(C)       &kp LG(S)  &kp LC(LA(KP_NUMBER_0))      &kp UNDERSCORE  &kp LEFT_BRACKET  &kp DOLLAR       &kp PERCENT           &kp AMPERSAND          &kp RIGHT_BRACKET
-&kp LG(LS(Z))  &kp LG(Z)      &kp LG(X)  &kp LG(A)       &kp LG(N)  &kp EQUAL                    &kp AT          &kp SLASH         &kp EXCLAMATION  &kp DOUBLE_QUOTES     &kp HASH               &kp BACKSLASH
-&trans         &trans         &trans     &kp LEFT_SHIFT  &trans     &trans                       &kp SEMICOLON   &kp COLON                                                                       &kp PIPE
+&kp LG(Q)      &kp LG(T)      &kp LG(R)  &kp LG(W)       &kp PLUS                                            &kp LEFT_BRACE    &kp SQT          &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS  &kp RIGHT_BRACE
+&kp LG(Y)      &kp LS(LG(V))  &kp LG(V)  &kp LG(C)       &kp LG(S)  &kp LG(KP_NUMBER_0)      &kp UNDERSCORE  &kp LEFT_BRACKET  &kp DOLLAR       &kp PERCENT           &kp AMPERSAND          &kp RIGHT_BRACKET
+&kp LG(LS(Z))  &kp LG(Z)      &kp LG(X)  &kp LG(A)       &kp LG(N)  &kp EQUAL                &kp AT          &kp SLASH         &kp EXCLAMATION  &kp DOUBLE_QUOTES     &kp HASH               &kp BACKSLASH
+&trans         &trans         &trans     &kp LEFT_SHIFT  &trans     &trans                   &kp SEMICOLON   &kp COLON                                                                       &kp PIPE
             >;
 
             sensor-bindings = <&inc_dec_kp LG(Z) LG(LS(Z))>;
