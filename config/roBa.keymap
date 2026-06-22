@@ -136,10 +136,10 @@
 
         number {
             bindings = <
-&trans            &trans            &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS  &kp RIGHT_PARENTHESIS                          &kp PLUS      &kp NUMBER_7  &kp NUMBER_8  &kp NUMBER_9  &kp SLASH
-&kp LEFT_COMMAND  &trans            &kp LEFT_BRACKET      &kp RIGHT_BRACKET      &kp RIGHT_BRACKET      &trans      &kp COMMA   &kp EQUAL     &kp NUMBER_4  &kp NUMBER_5  &kp NUMBER_6  &kp ASTERISK
-&kp LEFT_SHIFT    &trans            &kp LEFT_BRACE        &kp RIGHT_BRACE        &kp RIGHT_BRACE        &trans      &kp PERIOD  &kp NUMBER_0  &kp NUMBER_1  &kp NUMBER_2  &kp NUMBER_3  &kp MINUS
-&trans            &kp LEFT_COMMAND  &kp LEFT_SHIFT        &trans                 &trans                 &trans      &kp ENTER   &kp ENTER                                               &kp PLUS
+&trans            &trans            &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS  &kp TILDE                                &kp PLUS      &kp NUMBER_7  &kp NUMBER_8  &kp NUMBER_9  &kp SLASH
+&kp LEFT_COMMAND  &trans            &kp LEFT_BRACKET      &kp RIGHT_BRACKET      &kp CARET        &trans      &kp COMMA   &kp EQUAL     &kp NUMBER_4  &kp NUMBER_5  &kp NUMBER_6  &kp ASTERISK
+&kp LEFT_SHIFT    &trans            &kp LEFT_BRACE        &kp RIGHT_BRACE        &kp RIGHT_BRACE  &trans      &kp PERIOD  &kp NUMBER_0  &kp NUMBER_1  &kp NUMBER_2  &kp NUMBER_3  &kp MINUS
+&trans            &kp LEFT_COMMAND  &kp LEFT_SHIFT        &trans                 &trans           &trans      &kp ENTER   &kp ENTER                                               &kp PLUS
             >;
         };
     };
