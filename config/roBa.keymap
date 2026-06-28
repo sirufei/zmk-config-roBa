@@ -100,10 +100,10 @@
 
         ARROW {
             bindings = <
-&kp ESCAPE      &kp LC(LS(TAB))         &kp UP_ARROW    &kp LC(TAB)              &trans                         &trans    &kp UP_ARROW    &kp UP_ARROW    &trans           &trans
-&kp HOME        &kp LEFT_ARROW          &kp DOWN_ARROW  &kp RIGHT_ARROW          &kp END  &trans      &kp HOME  &kp HOME  &kp LEFT_ARROW  &kp DOWN_ARROW  &kp RIGHT_ARROW  &kp END
-&kp LEFT_SHIFT  &kp LG(LS(LEFT_ARROW))  &trans          &kp LG(LS(RIGHT_ARROW))  &trans   &trans      &trans    &trans    &trans          &trans          &trans           &trans
-&trans          &kp LEFT_COMMAND        &kp LSHIFT      &kp LEFT_CONTROL         &trans   &trans      &trans    &trans                                                     &trans
+&kp ESCAPE      &kp LC(LS(TAB))         &kp UP_ARROW      &kp LC(TAB)              &trans                         &trans    &kp UP_ARROW    &kp UP_ARROW    &trans           &trans
+&kp HOME        &kp LEFT_ALT            &kp LEFT_COMMAND  &kp LEFT_SHIFT           &kp END  &trans      &kp HOME  &kp HOME  &kp LEFT_ARROW  &kp DOWN_ARROW  &kp RIGHT_ARROW  &kp END
+&kp LEFT_SHIFT  &kp LG(LS(LEFT_ARROW))  &trans            &kp LG(LS(RIGHT_ARROW))  &trans   &trans      &trans    &trans    &trans          &trans          &trans           &trans
+&trans          &kp LEFT_COMMAND        &kp LSHIFT        &kp LEFT_CONTROL         &trans   &trans      &trans    &trans                                                     &trans
             >;
 
             sensor-bindings = <&inc_dec_kp PAGE_DOWN PAGE_UP>;
@@ -165,10 +165,10 @@
 
         layer_10 {
             bindings = <
-&kp LC(Q)      &kp LC(T)  &kp LC(R)  &kp LC(W)  &kp LC(F)                                 &kp LEFT_BRACE  &kp SQT          &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS  &kp RIGHT_BRACE
-&kp LC(Y)      &kp LC(V)  &kp LC(V)  &kp LC(O)  &kp LC(S)  &trans         &kp UNDERSCORE  &kp LBKT        &kp DOLLAR       &kp PERCENT           &kp AMPERSAND          &kp RIGHT_BRACKET
-&kp LC(LS(Z))  &kp LC(Z)  &kp LC(X)  &kp LC(A)  &kp LC(N)  &kp LC(R)      &kp AT_SIGN     &kp FSLH        &kp EXCLAMATION  &kp DOUBLE_QUOTES     &kp HASH               &kp NON_US_BACKSLASH
-&trans         &trans     &trans     &trans     &trans     &trans         &kp SEMI        &kp COLON                                                                     &kp PIPE
+&kp LC(Q)      &kp LC(T)  &kp LC(R)  &kp LC(W)       &kp LC(F)                                 &kp LEFT_BRACE  &kp SQT          &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS  &kp RIGHT_BRACE
+&kp LC(Y)      &kp LC(V)  &kp LC(V)  &kp LC(O)       &kp LC(S)  &trans         &kp UNDERSCORE  &kp LBKT        &kp DOLLAR       &kp PERCENT           &kp AMPERSAND          &kp RIGHT_BRACKET
+&kp LC(LS(Z))  &kp LC(Z)  &kp LC(X)  &kp LC(A)       &kp LC(N)  &kp LC(R)      &kp AT_SIGN     &kp FSLH        &kp EXCLAMATION  &kp DOUBLE_QUOTES     &kp HASH               &kp NON_US_BACKSLASH
+&trans         &trans     &trans     &kp LEFT_SHIFT  &trans     &trans         &kp SEMI        &kp COLON                                                                     &kp PIPE
             >;
         };
 
