@@ -174,10 +174,10 @@
 
         layer_11 {
             bindings = <
-&trans  &trans  &trans  &trans  &trans                      &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans      &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans      &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans      &trans  &trans                          &trans
+&kp ESC         &kp LS(TAB)             &kp O             &kp TAB                  &trans                      &trans    &kp UP    &kp UP    &trans     &trans
+&kp A           &kp LEFT_ALT            &kp LEFT_CONTROL  &kp LEFT_SHIFT           &trans  &trans      &trans  &kp HOME  &kp LEFT  &kp DOWN  &kp RIGHT  &kp END
+&kp LEFT_SHIFT  &kp LC(LS(LEFT_ARROW))  &trans            &kp LC(LS(RIGHT_ARROW))  &trans  &trans      &trans  &trans    &trans    &trans    &trans     &trans
+&trans          &kp LEFT_CONTROL        &trans            &trans                   &trans  &trans      &trans  &trans                                   &trans
             >;
         };
 
