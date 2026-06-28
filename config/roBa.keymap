@@ -165,10 +165,10 @@
 
         layer_10 {
             bindings = <
-&trans  &trans  &trans  &trans  &trans                      &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans      &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans      &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans      &trans  &trans                          &trans
+&kp LC(Q)      &kp LC(T)  &kp LC(R)  &kp LC(W)  &kp LC(F)                                 &kp LEFT_BRACE  &kp SQT          &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS  &kp RIGHT_BRACE
+&kp LC(Y)      &kp LC(V)  &kp LC(V)  &kp LC(O)  &kp LC(S)  &trans         &kp UNDERSCORE  &kp LBKT        &kp DOLLAR       &kp PERCENT           &kp AMPERSAND          &kp RIGHT_BRACKET
+&kp LC(LS(Z))  &kp LC(Z)  &kp LC(X)  &kp LC(A)  &kp LC(N)  &kp LC(R)      &kp AT_SIGN     &kp FSLH        &kp EXCLAMATION  &kp DOUBLE_QUOTES     &kp HASH               &kp NON_US_BACKSLASH
+&trans         &trans     &trans     &trans     &trans     &trans         &kp SEMI        &kp COLON                                                                     &kp PIPE
             >;
         };
 
