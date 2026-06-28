@@ -152,6 +152,8 @@
 &kp LSHFT  &kp Z      &kp B     &kp K                   &kp V                    &kp DEL                        &kp FSLH  &kp L                    &kp D  &kp M  &kp J  &kp COMMA
 &kp LALT   &kp LCTRL  &kp LGUI  &lt_to_layer_0 9 GRAVE  &lt_to_layer_0 10 SPACE  &lt_to_layer_0 11 LG(TAB)      &kp BSPC  &lt_to_layer_0 12 ENTER                       &kp MINUS
             >;
+
+            sensor-bindings = <&inc_dec_kp LA(LEFT_ARROW) LA(RIGHT_ARROW)>;
         };
 
         layer_9 {
@@ -174,7 +176,7 @@
 
         layer_11 {
             bindings = <
-&kp ESC         &kp LS(TAB)             &kp O             &kp TAB                  &trans                      &trans    &kp UP    &kp UP    &trans     &trans
+&kp ESC         &kp LS(TAB)             &trans            &kp TAB                  &trans                      &trans    &kp UP    &kp UP    &trans     &trans
 &kp A           &kp LEFT_ALT            &kp LEFT_CONTROL  &kp LEFT_SHIFT           &trans  &trans      &trans  &kp HOME  &kp LEFT  &kp DOWN  &kp RIGHT  &kp END
 &kp LEFT_SHIFT  &kp LC(LS(LEFT_ARROW))  &trans            &kp LC(LS(RIGHT_ARROW))  &trans  &trans      &trans  &trans    &trans    &trans    &trans     &trans
 &trans          &kp LEFT_CONTROL        &trans            &kp LEFT_WIN             &trans  &trans      &trans  &trans                                   &trans
@@ -183,11 +185,13 @@
 
         layer_12 {
             bindings = <
-&trans  &trans  &trans  &trans  &trans                      &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans      &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans      &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans      &trans  &trans                          &trans
+&kp F1     &kp F2         &kp F3       &kp F4   &kp F5                             &kp C_BRI_UP   &kp C_VOL_UP      &kp C_VOLUME_DOWN  &kp K_MUTE  &kp LS(LG(S))
+&kp F6     &kp LC(MINUS)  &kp LS(TAB)  &kp TAB  &kp LC(PLUS)  &trans       &trans  &kp C_BRI_DEC  &kp LS(LC(LEFT))  &kp LS(LC(RIGHT))  &kp TAB     &kp LS(LG(S))
+&kp LSHFT  &kp F7         &kp F8       &kp F9   &kp F10       &kp F11      &trans  &trans         &trans            &trans             &trans      &trans
+&trans     &kp LCTRL      &kp F12      &trans   &kp LALT      &trans       &trans  &trans                                                          &trans
             >;
+
+            sensor-bindings = <&inc_dec_kp LS(TAB) TAB>;
         };
     };
 };
