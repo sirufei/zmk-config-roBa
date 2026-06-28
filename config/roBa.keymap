@@ -89,9 +89,9 @@
 
         NUM {
             bindings = <
-&kp LG(Q)      &kp LG(T)      &kp LG(R)  &kp LG(W)       &kp PLUS                                            &kp LEFT_BRACE    &kp SQT          &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS  &kp RIGHT_BRACE
+&kp LG(Q)      &kp LG(T)      &kp LG(R)  &kp LG(W)       &kp LG(F)                                           &kp LEFT_BRACE    &kp SQT          &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS  &kp RIGHT_BRACE
 &kp LG(Y)      &kp LS(LG(V))  &kp LG(V)  &kp LG(C)       &kp LG(S)  &kp LG(KP_NUMBER_0)      &kp UNDERSCORE  &kp LEFT_BRACKET  &kp DOLLAR       &kp PERCENT           &kp AMPERSAND          &kp RIGHT_BRACKET
-&kp LG(LS(Z))  &kp LG(Z)      &kp LG(X)  &kp LG(A)       &kp LG(N)  &kp EQUAL                &kp AT          &kp SLASH         &kp EXCLAMATION  &kp DOUBLE_QUOTES     &kp HASH               &kp BACKSLASH
+&kp LG(LS(Z))  &kp LG(Z)      &kp LG(X)  &kp LG(A)       &kp LG(N)  &kp LG(R)                &kp AT          &kp SLASH         &kp EXCLAMATION  &kp DOUBLE_QUOTES     &kp HASH               &kp BACKSLASH
 &trans         &trans         &trans     &kp LEFT_SHIFT  &trans     &trans                   &kp SEMICOLON   &kp COLON                                                                       &kp PIPE
             >;
 
