@@ -185,10 +185,10 @@
 
         layer_12 {
             bindings = <
-&kp F1     &kp F2         &kp F3       &kp F4   &kp F5                             &kp C_BRI_UP   &kp C_VOL_UP      &kp C_VOLUME_DOWN  &kp K_MUTE  &kp LS(LG(S))
-&kp F6     &kp LC(MINUS)  &kp LS(TAB)  &kp TAB  &kp LC(PLUS)  &trans       &trans  &kp C_BRI_DEC  &kp LS(LC(LEFT))  &kp LS(LC(RIGHT))  &kp TAB     &kp LS(LG(S))
-&kp LSHFT  &kp F7         &kp F8       &kp F9   &kp F10       &kp F11      &trans  &trans         &trans            &trans             &trans      &trans
-&trans     &kp LCTRL      &kp F12      &trans   &kp LALT      &trans       &trans  &trans                                                          &trans
+&kp F1     &kp F2         &kp F3       &kp F4   &kp F5                             &kp C_BRI_UP   &kp C_VOL_UP        &kp C_VOLUME_DOWN    &kp K_MUTE  &kp LS(LG(S))
+&kp F6     &kp LC(MINUS)  &kp LS(TAB)  &kp TAB  &kp LC(PLUS)  &trans       &trans  &kp C_BRI_DEC  &kp LS(LC(LEFT))    &kp LS(LC(RIGHT))    &kp TAB     &kp LS(LG(S))
+&kp LSHFT  &kp F7         &kp F8       &kp F9   &kp F10       &kp F11      &trans  &trans         &kp LA(LEFT_ARROW)  &kp LA(RIGHT_ARROW)  &trans      &trans
+&trans     &kp LCTRL      &kp F12      &trans   &kp LALT      &trans       &trans  &trans                                                              &trans
             >;
 
             sensor-bindings = <&inc_dec_kp LS(TAB) TAB>;
